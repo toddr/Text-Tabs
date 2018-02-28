@@ -8,7 +8,7 @@ require Exporter;
 @EXPORT_OK = qw($columns $break $huge);
 
 $VERSION = 2013.0523;
-$SUBVERSION = 'modern';
+$SUBVERSION = 'modern'; # back-compat vestige
 
 use 5.010_000;
 
@@ -126,6 +126,7 @@ sub fill
 }
 
 1;
+
 __END__
 
 =head1 NAME
@@ -266,17 +267,6 @@ Code:
 Result:
 
   "This is a bit of|text that forms a|normal book-style|paragraph"
-
-=head1 SUBVERSION
-
-This module comes in two flavors: one for modern perls (5.10 and above)
-and one for ancient obsolete perls.  The version for modern perls has
-support for Unicode.  The version for old perls does not.  You can tell
-which version you have installed by looking at C<$Text::Wrap::SUBVERSION>:
-it is C<old> for obsolete perls and C<modern> for current perls.
-
-This man page is for the version for modern perls and so that's probably
-what you've got.
 
 =head1 SEE ALSO
 
