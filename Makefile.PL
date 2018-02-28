@@ -10,9 +10,7 @@ MANIFEST :
 my $u = 'github.com/ap/Text-Tabs';
 
 my	%WriteMakefileArgs = (
-	'NAME'		=> 'Text-Wrap',
-	'DISTNAME'	  => 'Text-Tabs+Wrap',
-
+	NAME               => 'Text::Tabs',
 	VERSION_FROM       => 'lib/Text/Tabs.pm',
 	ABSTRACT           => 'Expand tabs and do simple line wrapping',
 	AUTHOR             => 'David Muir Sharnoff <muir@idiom.org>',
