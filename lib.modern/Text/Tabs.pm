@@ -136,11 +136,11 @@ C<local($Text::Tabs::tabstop)>.
     print unexpand $_;
   }
 
-Instead of the shell's C<expand> command, use:
+Instead of the C<expand> command, use:
 
   perl -MText::Tabs -n -e 'print expand $_'
 
-Instead of the shell's C<unexpand -a> command, use:
+Instead of the C<unexpand -a> command, use:
 
   perl -MText::Tabs -n -e 'print unexpand $_'
 
