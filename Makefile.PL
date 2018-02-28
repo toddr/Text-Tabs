@@ -1,4 +1,4 @@
-use strict; use warnings;
+use 5.006; use strict; use warnings;
 use ExtUtils::MakeMaker;
 
 sub MY::postamble { <<'' }
@@ -13,15 +13,6 @@ my	%WriteMakefileArgs = (
 	'NAME'		=> 'Text-Wrap',
 	'DISTNAME'	  => 'Text-Tabs+Wrap',
 	'VERSION_FROM' => 'lib.modern/Text/Wrap.pm',
-	($] >= 5.005 ? 
-		(
-			ABSTRACT	=> 'Expand tabs and do simple line wrapping',
-			AUTHOR		=> 'David Muir Sharnoff <muir@idiom.org>',
-		) 
-		: 
-		()
-	),
-	'dist' => { COMPRESS=>"gzip", SUFFIX=>"gz" },
 	'INSTALLDIRS'	=> 'perl',
 
 	PM =>	($] > 5.010 ?
@@ -37,6 +28,8 @@ my	%WriteMakefileArgs = (
 
 	,
 
+	ABSTRACT           => 'Expand tabs and do simple line wrapping',
+	AUTHOR             => 'David Muir Sharnoff <muir@idiom.org>',
 	META_MERGE         => {
 		'meta-spec'    => { version => 2 },
 		resources      => {
