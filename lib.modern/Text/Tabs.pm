@@ -18,11 +18,6 @@ BEGIN	{
 	$debug = 0;
 }
 
-my $CHUNK = qr/\X/;
-
-sub _xlen (_) { scalar(() = $_[0] =~ /$CHUNK/g) } 
-sub _xpos (_) { _xlen( substr( $_[0], 0, pos($_[0]) ) ) }
-
 sub expand {
 	my @l;
 	my $pad;
@@ -83,21 +78,6 @@ sub unexpand
 
 1;
 __END__
-
-sub expand
-{
-	my (@l) = @_;
-	for $_ (@l) {
-		1 while s/(^|\n)([^\t\n]*)(\t+)/
-			$1. $2 . (" " x 
-				($tabstop * length($3)
-				- (length($2) % $tabstop)))
-			/sex;
-	}
-	return @l if wantarray;
-	return $l[0];
-}
-
 
 =head1 NAME
 
