@@ -1,6 +1,12 @@
 use strict; use warnings;
 use ExtUtils::MakeMaker;
 
+sub MY::postamble { <<'' }
+create_distdir : MANIFEST
+distdir        : MANIFEST
+MANIFEST :
+	( echo MANIFEST ; git ls-files ) | sort -f > MANIFEST
+
 my $u = 'github.com/ap/Text-Tabs';
 
 my	%WriteMakefileArgs = (
