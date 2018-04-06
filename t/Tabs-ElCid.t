@@ -150,11 +150,20 @@ sub check_data {
 	$_ = unexpand($_);
 
 	if ($_ ne $DATA[$.]{OLD}{DATA}) {
-	    warn "expand/unexpand round-trip equivalency failed at line $.";
-	    warn sprintf("  Expected:\n%s\n%v02x\n  But got:\n%s\n%v02x\n",
-		    ( $DATA[$.]{OLD}{DATA} ) x 2, ($_) x 2 );
+	    warn "Round-trip equivalency failed at line $.";
 	    $bad++;
 	} 
+
+	if ($bad) {
+	    warn join "\n", map {
+	    my $encoded = pack "C*", unpack "U0C*", $_->[1];
+	    sprintf "  %s:\n%s\n%v02x", ucfirst $_->[0], $encoded, $_->[1];
+	    } (
+		[ input      => $DATA[$.]{OLD}{DATA} ],
+		[ expanded   => $DATA[$.]{NEW}{DATA} ],
+		[ unexpanded => $_ ],
+	    );
+	}
 
 	my $num = $. + 1;
 	print $bad ? "not " : "", "ok $num\n";
