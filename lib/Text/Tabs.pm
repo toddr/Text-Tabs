@@ -5,7 +5,6 @@ require Exporter;
 @ISA = (Exporter);
 @EXPORT = qw(expand unexpand $tabstop);
 
-use vars qw($VERSION $SUBVERSION $tabstop $debug);
 $VERSION = 2013.0523;
 $SUBVERSION = 'modern'; # back-compat vestige
 
@@ -13,10 +12,7 @@ use strict;
 
 use 5.010_000;
 
-BEGIN	{
-	$tabstop = 8;
-	$debug = 0;
-}
+our $tabstop = 8;
 
 sub expand {
 	my @l;

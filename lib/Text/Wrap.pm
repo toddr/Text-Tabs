@@ -12,19 +12,16 @@ $SUBVERSION = 'modern'; # back-compat vestige
 
 use 5.010_000;
 
-use vars qw($VERSION $SUBVERSION $columns $debug $break $huge $unexpand $tabstop $separator $separator2);
 use strict;
 
-BEGIN	{
-	$columns = 76;  # <= screen width
-	$debug = 0;
-	$break = '(?=\s)\X';
-	$huge = 'wrap'; # alternatively: 'die' or 'overflow'
-	$unexpand = 1;
-	$tabstop = 8;
-	$separator = "\n";
-	$separator2 = undef;
-}
+our $columns = 76;  # <= screen width
+our $debug = 0;
+our $break = '(?=\s)\X';
+our $huge = 'wrap'; # alternatively: 'die' or 'overflow'
+our $unexpand = 1;
+our $tabstop = 8;
+our $separator = "\n";
+our $separator2 = undef;
 
 my $CHUNK = qr/\X/;
 
