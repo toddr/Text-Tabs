@@ -1,5 +1,3 @@
-#!perl
-
 BEGIN {
 	if ($] <= 5.010) {
 		print "1..0 # skip this test requires perl 5.010 or greater ($])\n";

@@ -1,5 +1,3 @@
-#!/usr/bin/perl -I.
-
 use warnings;
 use strict;
 use Text::Wrap;

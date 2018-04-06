@@ -1,5 +1,3 @@
-#!/usr/bin/perl -I.
-
 use Text::Wrap;
 
 print "1..1\n";

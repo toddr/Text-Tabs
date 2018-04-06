@@ -1,4 +1,4 @@
-#!/usr/bin/perl -I. -w
+use warnings;
 
 BEGIN {
 	if ($ENV{HARNESS_ACTIVE}) {

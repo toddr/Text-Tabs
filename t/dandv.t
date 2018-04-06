@@ -1,4 +1,3 @@
-
 use Text::Wrap;
 use Test::More tests => 2;
 $Text::Wrap::columns = 4;

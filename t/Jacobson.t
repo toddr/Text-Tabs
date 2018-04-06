@@ -1,5 +1,3 @@
-#!/usr/bin/perl -I.
-
 # From: Dan Jacobson <jidanni at jidanni dot org>
 
 use Text::Wrap qw(wrap $columns $huge $break);

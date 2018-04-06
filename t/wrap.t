@@ -1,5 +1,3 @@
-#!/usr/bin/perl
-
 @tests = (split(/\nEND\n/s, <<'DONE'));
 TEST1
 This 

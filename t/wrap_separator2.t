@@ -1,4 +1,5 @@
-#!/usr/local/bin/perl -w
+use warnings;
+
 #Author: Dan Dascalescu
 use strict;
 use Test::More tests => 1;

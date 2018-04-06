@@ -1,5 +1,3 @@
-#!/usr/bin/perl -I.
-
 #Causes Text::Wrap to die...
 use warnings;
 use strict;

@@ -1,4 +1,4 @@
-#!/usr/bin/perl -w -I.
+use warnings;
 
 # https://rt.perl.org/rt3/Ticket/Display.html?id=39548
 
