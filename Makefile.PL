@@ -21,6 +21,7 @@ my	%WriteMakefileArgs = (
 			bugtracker => { web => "https://$u/issues" },
 		},
 	},
+	MIN_PERL_VERSION   => '5.006',
 	INSTALLDIRS        => ( "$]" >= 5.011 ? 'site' : 'perl' ),
 );
 
@@ -29,5 +30,8 @@ do { $_ = join '; ', @$_ for $WriteMakefileArgs{'AUTHOR'} }
 
 delete $WriteMakefileArgs{'META_MERGE'}
 	unless eval { ExtUtils::MakeMaker->VERSION(6.46) };
+
+delete $WriteMakefileArgs{'MIN_PERL_VERSION'}
+	unless eval { ExtUtils::MakeMaker->VERSION(6.48) };
 
 WriteMakefile(%WriteMakefileArgs);

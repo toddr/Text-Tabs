@@ -10,8 +10,6 @@ our @EXPORT = qw(expand unexpand $tabstop);
 our $VERSION = 2013.0523;
 our $SUBVERSION = 'modern'; # back-compat vestige
 
-use 5.010_000;
-
 our $tabstop = 8;
 
 sub expand {
@@ -20,7 +18,7 @@ sub expand {
 		push @l, '';
 		while ( /\G(.*?)(^|\z|\t)/smg ) {
 			$l[-1] .= $1;
-			$l[-1] .= ' ' x ( $tabstop - (() = "$1" =~ /\X/g) % $tabstop ) if $2;
+			$l[-1] .= ' ' x ( $tabstop - (() = "$1" =~ /\PM/g) % $tabstop ) if $2;
 		}
 	}
 	wantarray ? @l : $l[0];
@@ -30,7 +28,7 @@ sub unexpand
 {
 	my @l = &expand;
 	for ( @l ) {
-		s[((?:(?![\r\n])\X){$tabstop})]{
+		s[((?:(?![\r\n])\PM\pM*){$tabstop})]{
 			my $c = $1, my $chr;
 			if ( '  ' eq substr $c, -2 ) {
 				do { $chr = chop $c } while ' ' eq $chr;

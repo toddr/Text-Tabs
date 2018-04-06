@@ -10,22 +10,18 @@ require Exporter;
 $VERSION = 2013.0523;
 $SUBVERSION = 'modern'; # back-compat vestige
 
-use 5.010_000;
-
 use strict;
 
 our $columns = 76;  # <= screen width
 our $debug = 0;
-our $break = '(?=\s)\X';
+our $break = '(?=\s)\PM\pM*';
 our $huge = 'wrap'; # alternatively: 'die' or 'overflow'
 our $unexpand = 1;
 our $tabstop = 8;
 our $separator = "\n";
 our $separator2 = undef;
 
-my $CHUNK = qr/\X/;
-
-sub _xlen(_) { scalar(() = $_[0] =~ /$CHUNK/g) }
+sub _xlen { () = $_[0] =~ /\PM/g }
 
 use Text::Tabs qw(expand unexpand);
 
@@ -54,17 +50,17 @@ sub wrap
 
 	pos($t) = 0;
 	while ($t !~ /\G(?:$break)*\Z/gc) {
-		if ($t =~ /\G((?:(?=[^\n])\X){0,$ll})($break|\n+|\z)/xmgc) {
+		if ($t =~ /\G((?:(?=[^\n])\PM\pM*){0,$ll})($break|\n+|\z)/xmgc) {
 			$r .= $unexpand 
 				? unexpand($nl . $lead . $1)
 				: $nl . $lead . $1;
 			$remainder = $2;
-		} elsif ($huge eq 'wrap' && $t =~ /\G((?:(?=[^\n])\X){$ll})/gc) {
+		} elsif ($huge eq 'wrap' && $t =~ /\G((?:(?=[^\n])\PM\pM*){$ll})/gc) {
 			$r .= $unexpand 
 				? unexpand($nl . $lead . $1)
 				: $nl . $lead . $1;
 			$remainder = defined($separator2) ? $separator2 : $separator;
-		} elsif ($huge eq 'overflow' && $t =~ /\G((?:(?=[^\n])\X)*?)($break|\n+|\z)/xmgc) {
+		} elsif ($huge eq 'overflow' && $t =~ /\G((?:(?=[^\n])\PM\pM*)*?)($break|\n+|\z)/xmgc) {
 			$r .= $unexpand 
 				? unexpand($nl . $lead . $1)
 				: $nl . $lead . $1;
