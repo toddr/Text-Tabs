@@ -13,7 +13,6 @@ my	%WriteMakefileArgs = (
 	'NAME'		=> 'Text-Wrap',
 	'DISTNAME'	  => 'Text-Tabs+Wrap',
 	'VERSION_FROM' => 'lib.modern/Text/Wrap.pm',
-	'INSTALLDIRS'	=> 'perl',
 
 	PM =>	($] > 5.010 ?
 		{
@@ -37,6 +36,7 @@ my	%WriteMakefileArgs = (
 			bugtracker => { web => "https://$u/issues" },
 		},
 	},
+	INSTALLDIRS        => ( "$]" >= 5.011 ? 'site' : 'perl' ),
 );
 
 delete $WriteMakefileArgs{'META_MERGE'}
