@@ -92,7 +92,7 @@ it will affect the C<*tabstop> glob in your own package but not the one in C<Tex
 so C<expand>/C<unexpand> will not see the overriden value.
 Instead, you will have to use C<local $Text::Tabs::tabstop>. Sorry.
 
-=head1 BUGS
+=head1 BUGS AND LIMITATIONS
 
 Unlike the Unix utilities, backspaces do not decrement the column position.
 
@@ -102,7 +102,11 @@ and nothing special is done for zero-/half-/full-width characters.
 
 Exporting C<$tabstop> was a now-unfixable mistake.
 
-=head1 LICENSE
+=head1 AUTHOR
+
+Aristotle Pagaltzis E<lt>pagaltzis@gmx.deE<gt>
+
+=head1 COPYRIGHT AND LICENSE
 
 This software is copyright (c) 2018 by Aristotle Pagaltzis.
 
