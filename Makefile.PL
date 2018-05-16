@@ -13,7 +13,7 @@ my	%WriteMakefileArgs = (
 	NAME               => 'Text::Tabs',
 	VERSION_FROM       => 'lib/Text/Tabs.pm',
 	ABSTRACT           => 'Expand tabs and do simple line wrapping',
-	AUTHOR             => 'David Muir Sharnoff <muir@idiom.org>',
+	AUTHOR             => [ 'David Muir Sharnoff <muir@idiom.org>', 'Aristotle Pagaltzis <pagaltzis@gmx.de>' ],
 	META_MERGE         => {
 		'meta-spec'    => { version => 2 },
 		resources      => {
@@ -21,10 +21,17 @@ my	%WriteMakefileArgs = (
 			bugtracker => { web => "https://$u/issues" },
 		},
 	},
+	MIN_PERL_VERSION   => '5.006',
 	INSTALLDIRS        => ( "$]" >= 5.011 ? 'site' : 'perl' ),
 );
 
+do { $_ = join '; ', @$_ for $WriteMakefileArgs{'AUTHOR'} }
+	unless eval { ExtUtils::MakeMaker->VERSION(6.57_02) };
+
 delete $WriteMakefileArgs{'META_MERGE'}
 	unless eval { ExtUtils::MakeMaker->VERSION(6.46) };
+
+delete $WriteMakefileArgs{'MIN_PERL_VERSION'}
+	unless eval { ExtUtils::MakeMaker->VERSION(6.48) };
 
 WriteMakefile(%WriteMakefileArgs);
