@@ -1,14 +1,14 @@
+use strict;
+
 package Text::Tabs;
 
 require Exporter;
 
-@ISA = (Exporter);
-@EXPORT = qw(expand unexpand $tabstop);
+our @ISA = qw(Exporter);
+our @EXPORT = qw(expand unexpand $tabstop);
 
-$VERSION = 2013.0523;
-$SUBVERSION = 'modern'; # back-compat vestige
-
-use strict;
+our $VERSION = 2013.0523;
+our $SUBVERSION = 'modern'; # back-compat vestige
 
 use 5.010_000;
 
